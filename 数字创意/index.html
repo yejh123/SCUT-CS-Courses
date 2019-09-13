@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+<title>OPEN bg</title>
+</head>
+<style>
+* {
+margin: 0;
+padding: 0;
+-moz-user-select: none;
+-webkit-user-select: none;
+-ms-user-select: none;
+-khtml-user-select: none;
+user-select: none;
+-webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+body {
+margin: 0 auto;
+height: 100%;
+width: 100%;
+background-repeat:no-repeat;
+}
+#tiaoguo {
+position: fixed;
+right: 8%;
+top: 5%;
+border-radius:10px;
+padding:.6rem;
+background-color: rgba(158, 158, 158, 0.25);
+color: #fff;
+font-size: .8rem;
+z-index: 520;
+}
+.logo {
+text-align: center;
+margin-top:4%;
+}
+</style>
+<body ondragstart="return false;" onselectstart="return false;">
+<a onclick="guanggao()"  id="aemo" href="">
+<img id="demo" width="100%" height="100%" src="" oncontextmenu="return false;" onselectstart="return false;" ondragstart=”return false;”></a>
+<div id="tiaoguo" onclick="tiaoguo()">
+<span id="mes"> </span>丨跳过
+</div>
+<div class="logo">
+<img id="logo" height="50px" src=""/>
+</div>
+<script>
+function GetQueryString(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+    var r = window.location.search.substr(1).match(reg);
+    if (r != null) return unescape(r[2]);
+    return null
+}
+document.getElementById("aemo").href = GetQueryString("adurl");
+document.getElementById("demo").src = GetQueryString("imgurl");
+document.getElementById("logo").src = GetQueryString("logourl");
+var i = GetQueryString("time");
+var intervalid;
+intervalid = setInterval("fun()", 1000);
+function fun() {
+    if (i == 0) {
+        window.AppInventor.setWebViewString("跳过");
+        clearInterval(intervalid)
+    }
+    document.getElementById("mes").innerHTML = i;
+    i--
+}
+function tiaoguo() {
+    window.AppInventor.setWebViewString("跳过")
+}
+function guanggao() {
+    window.AppInventor.setWebViewString("广告")
+}
+</script>
+</body>
+</html>
